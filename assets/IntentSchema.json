@@ -1,0 +1,28 @@
+{
+  "intents": [
+    {
+      "intent": "Play",
+      "slots": [
+        {
+          "name": "Bird",
+          "type": "BIRD_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "Tell",
+      "slots": [
+        {
+          "name": "Bird",
+          "type": "BIRD_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "Nothing"
+    },
+    {
+      "intent": "Stop"
+    }
+  ]
+}
