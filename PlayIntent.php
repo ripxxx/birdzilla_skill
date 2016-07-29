@@ -16,8 +16,16 @@ class PlayIntent extends BirdzillaIntent {
                 $data = $this->loadBirdData($bird[0], $bird[2]);
                 
                 if($data !== false) {
+                    $response->setTitle($bird[1]);
                     $response->setImage($data['imageHttpsUrl']);
-                    $response->setDescription($data['description']);
+                    $description = preg_replace("/<\/p>[^<]*?<p>/", ' ', $data['description']);
+                    $description = preg_replace("/<[^>]+>/", '', $description);
+                    $description = preg_replace("/\t/", '', $description);
+                    $description = str_replace("’", "'", $description);
+                    $description = str_replace('"', "\\\"", $description);
+                    $description = trim($description);
+
+                    $response->setDescription($description);
                     $response->addText('Here is how '.$birdName.'  sounds like.');
                     $response->addAudio($data['audioHttpsUrl']);
                     if(!$shouldEndSession) {

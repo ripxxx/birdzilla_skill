@@ -135,7 +135,7 @@ class BirdzillaIntent extends Intent {
                     $data['originalAudioFileName'] = $audioFileName;
                     $data['originalAudioPath'] = $contentDirectoryPath.'/'.$audioFileName;
                     $command = 'ffmpeg -y -i "'.$contentDirectoryPath.'/'.$audioFileName.'" -ar 16000 -ab 48k -ac 1 "'.$contentDirectoryPath.'/'.$_audioFileName.'"';
-                    exec($command);
+                    //exec($command);
                     $data['audioFileName'] = $_audioFileName;
                     $data['audioPath'] = $contentDirectoryPath.'/'.$_audioFileName;
                     $data['audioHttpsUrl'] = $httpsUrl.'/'.$_audioFileName;
