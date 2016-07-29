@@ -8,7 +8,7 @@ class StopIntent extends Intent {
     }
     
     public function run($params = array()) {
-        $response = new Response(flase);
+        $response = new Response(false);
         $response->addText('What would you like to hear next?');
         return $response;
     }
