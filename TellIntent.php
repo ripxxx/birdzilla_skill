@@ -1,4 +1,14 @@
 <?php
+/**
+ * Created by Aleksandr Berdnikov.
+ * Copyright 2016 Onix-Systems.
+*/
+
+namespace Birdzilla;
+
+use AlexaPHPSDK\Response;
+use AlexaPHPSDK\Skill;
+use AlexaPHPSDK\User;
 
 require_once(__DIR__.'/BirdzillaIntent.php');
 

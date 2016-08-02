@@ -1,4 +1,13 @@
 <?php
+/**
+ * Created by Aleksandr Berdnikov.
+ * Copyright 2016 Onix-Systems.
+*/
+
+namespace Birdzilla;
+
+use AlexaPHPSDK\LaunchRequest;
+use AlexaPHPSDK\Response;
 
 class Launch extends LaunchRequest {
     

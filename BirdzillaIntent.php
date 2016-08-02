@@ -1,8 +1,18 @@
 <?php
+/**
+ * Created by Aleksandr Berdnikov.
+ * Copyright 2016 Onix-Systems.
+*/
+
+namespace Birdzilla;
+
+use AlexaPHPSDK\Intent as BaseIntent;
+use AlexaPHPSDK\Response;
+use AlexaPHPSDK\Skill;
 
 define('BIRDS_LIST_FILE_NAME', 'birds.lst');
 
-class BirdzillaIntent extends Intent {
+class BirdzillaIntent extends BaseIntent {
     
     protected function simplifyBirdName($name) {
         $name = preg_replace("/[^a-z]/", '', strtolower($name));
