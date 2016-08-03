@@ -10,8 +10,6 @@ use AlexaPHPSDK\Response;
 use AlexaPHPSDK\Skill;
 use AlexaPHPSDK\User;
 
-require_once(__DIR__.'/BirdzillaIntent.php');
-
 class TellIntent extends BirdzillaIntent {
     protected function generateResponse($birdName, $shouldEndSession) {
         $response = new Response($shouldEndSession);
