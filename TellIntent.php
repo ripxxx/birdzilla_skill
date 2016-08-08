@@ -14,7 +14,7 @@ class TellIntent extends BirdzillaIntent {
     protected function generateResponse($birdName, $shouldEndSession) {
         $response = new Response($shouldEndSession);
         $skill = Skill::getInstance();
-        $response->setRepromprtMessage('Just name a bird, and I will play it.');
+        $response->setRepromptMessage('Just name a bird, and I will play it.');
         
         $birdsList = $this->getBirdsList();
         if(count($birdsList) > 0) {
