@@ -4,7 +4,7 @@
  * Copyright 2016 Onix-Systems.
 */
 
-namespace Birdzilla;
+namespace birdzilla;
 
 use AlexaPHPSDK\Intent as BaseIntent;
 use AlexaPHPSDK\Response;
@@ -157,5 +157,64 @@ class BirdzillaIntent extends BaseIntent {
             }
         }
         return $data;
+    }
+    
+    protected function getMostPopularBirdName() {
+        $fileName = __DIR__.'/private/popular.json';
+        if(file_exists($fileName)) {
+            $contents = NULL;
+            $fh = fopen($fileName, "r");
+            if(flock($fh, LOCK_SH)) {
+                $contents = fread($fh, filesize($fileName));
+                flock($fh, LOCK_UN);
+            }
+            fclose($fh);
+            if(strlen($contents) > 1) {
+                $data = json_decode($contents, true);
+                if(is_array($data) && (count($data) > 0)) {
+                    if(asort($data)) {
+                        $names = array_keys($data);
+                        return array_pop($names);
+                    }
+                }
+            }
+        }
+        return NULL;
+    }
+    
+    protected function voteForBirdName($birdName) {
+        $fileName = __DIR__.'/private/popular.json';
+        $contents = NULL;
+        $fh = NULL;
+        $fe = false;
+        if(file_exists($fileName)) {
+            $fh = fopen($fileName, "r+");
+            $fe = true;
+        }
+        else {
+            $fh = fopen($fileName, "w");
+        }
+        if(flock($fh, LOCK_EX)) {
+            $data = array();
+            if($fe) {
+                $contents = fread($fh, filesize($fileName));
+                if(strlen($contents) > 1) {
+                    $data = json_decode($contents, true);
+                    if(is_array($data) && (count($data) > 0)) {
+                        !isset($data[$birdName]) && $data[$birdName] = 0;
+                        ++$data[$birdName];
+                    }
+                }
+            }
+            
+            if(count($data) == 0) {
+                $data[$birdName] = 1;
+            }
+            ftruncate($fh, 0);
+            fseek($fh, 0);
+            fwrite($fh, json_encode($data));
+            flock($fh, LOCK_UN);
+        }
+        fclose($fh);
     }
 }
