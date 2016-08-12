@@ -125,7 +125,7 @@ class BirdzillaIntent extends BaseIntent {
                     file_put_contents($contentDirectoryPath.'/'.$imageFileName, file_get_contents($imageUrl));
                     $data['imageFileName'] = $imageFileName;
                     $data['imagePath'] = $contentDirectoryPath.'/'.$imageFileName;
-                    $data['imageHttpsUrl'] = $httpsUrl.'/'.$imageFileName;
+                    $data['imageHttpsUrl'] = $httpsUrl.'/content/'.$imageFileName;
                 }//*/
                 
                 preg_match_all('/<li class="play-sound">[^<]*?<a.*?href="([^"]*?)"/i', $html, $matches);
@@ -148,7 +148,7 @@ class BirdzillaIntent extends BaseIntent {
                     exec($command);
                     $data['audioFileName'] = $_audioFileName;
                     $data['audioPath'] = $contentDirectoryPath.'/'.$_audioFileName;
-                    $data['audioHttpsUrl'] = $httpsUrl.'/'.$_audioFileName;
+                    $data['audioHttpsUrl'] = $httpsUrl.'/content/'.$_audioFileName;
                 }//*/
                 
                 $data['fanFacts'] = '';
