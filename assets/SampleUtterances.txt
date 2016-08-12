@@ -7,6 +7,8 @@ PlayLast how it sings
 PlayLast play song of it
 TellAboutLast tell me about last bird
 TellAboutLast tell me about it
+PlayPopular play song of most popular bird
+TellAboutPopular tell me about most popular bird
 Help help
 Help please help
 Enough enough
