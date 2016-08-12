@@ -19,7 +19,28 @@
       ]
     },
     {
-      "intent": "Nothing"
+      "intent": "Help"
+    },
+    {
+      "intent": "PlayRandom"
+    },
+    {
+      "intent": "TellRandom"
+    },
+    {
+      "intent": "PlayLast"
+    },
+    {
+      "intent": "TellAboutLast"
+    },
+    {
+      "intent": "PlayPopular"
+    },
+    {
+      "intent": "TellAboutPopular"
+    },
+    {
+      "intent": "Enough"
     },
     {
       "intent": "Stop"

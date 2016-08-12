@@ -1,5 +1,16 @@
 Play play song of {Bird}
 Tell tell me about {Bird}
-Nothing nothing
-Nothing that's all
+PlayRandom play song of random bird
+TellRandom tell me about random bird
+PlayLast play song of last bird
+PlayLast how it sings
+PlayLast play song of it
+TellAboutLast tell me about last bird
+TellAboutLast tell me about it
+Help help
+Help please help
+Enough enough
+Enough that's enough
+Stop nothing
+Stop that's all
 Stop stop

@@ -4,7 +4,7 @@
  * Copyright 2016 Onix-Systems.
 */
 
-namespace Birdzilla;
+namespace birdzilla;
 
 use AlexaPHPSDK\Response;
 use AlexaPHPSDK\Skill;
@@ -12,11 +12,11 @@ use AlexaPHPSDK\User;
 
 class PlayIntent extends BirdzillaIntent {
     
-   protected function generateResponse($birdName, $shouldEndSession) {
+    protected function generateResponse($birdName, $shouldEndSession) {
+        $this->user['lastBird'] = $birdName;
         $response = new Response($shouldEndSession);
         $skill = Skill::getInstance();
         $response->setRepromptMessage('Just name a bird, and I will play it.');
-        
         $birdsList = $this->getBirdsList();
         if(count($birdsList) > 0) {
             $_birdName = $this->simplifyBirdName($birdName);
@@ -35,7 +35,7 @@ class PlayIntent extends BirdzillaIntent {
                     $description = trim($description);
 
                     $response->setDescription($description);
-                    $response->addText('Here is how '.$birdName.'  sounds like.');
+                    $response->addText('Here is how '.$birdName.' sounds like.');
                     $response->addAudio($data['audioHttpsUrl']);
                     if(!$shouldEndSession) {
                         $response->addText('What would you like to hear next?');
@@ -58,11 +58,23 @@ class PlayIntent extends BirdzillaIntent {
     }
     
     public function ask($params = array()) {
-        return $this->generateResponse($params['bird'], true);
+        $lastBird = $this->user['lastBird'];
+        $this->voteForBirdName($params['bird']);
+        $response = $this->generateResponse($params['bird'], true);
+        if(!is_null($lastBird) && ($this->simplifyBirdName($params['bird']) == $this->simplifyBirdName($lastBird))) {
+            $response->removeCard();
+        }
+        return $response;
     }
     
     public function run($params = array()) {
-        return $this->generateResponse($params['bird'], false);
+        $lastBird = $this->user['lastBird'];
+        $this->voteForBirdName($params['bird']);
+        $response = $this->generateResponse($params['bird'], false);
+        if(!is_null($lastBird) && ($this->simplifyBirdName($params['bird']) == $this->simplifyBirdName($lastBird))) {
+            $response->removeCard();
+        }
+        return $response;
     }
 }
 

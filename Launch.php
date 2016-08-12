@@ -4,7 +4,7 @@
  * Copyright 2016 Onix-Systems.
 */
 
-namespace Birdzilla;
+namespace birdzilla;
 
 use AlexaPHPSDK\LaunchRequest;
 use AlexaPHPSDK\Response;
