@@ -13,8 +13,8 @@ class HelpIntent extends Intent {
         
         $response->addText('<p>I can play songs of birds of North America and tell stories about them. You can also ask me to play a bird song chosen at random or play song of most popular birds, which were requested the most.</p>');
         $response->addText('<p>You can use following voice commands to interact with me:</p>');
-        $response->addText('To play song, say - play song of <p>and then bird name</p>.');
-        $response->addText('To listen the story, ask - tell me about <p>and then bird name</p>.');
+        $response->addText('To play song, say - play song of <p>and then bird name</p>');
+        $response->addText('To listen the story, ask - tell me about <p>and then bird name</p>');
         $response->addText('Bird song is lasting about 30 seconds, you can say - <p>Alexa, enough</p>, to stop it or you can say - <p>Alexa, stop</p> to exit the skill.');
         $response->addText('<p>To play song of last bird, say - play song of last bird.</p>');
         $response->addText('<p>To listen the story about the most popural bird, ask - tell me about most popular bird.</p>');
